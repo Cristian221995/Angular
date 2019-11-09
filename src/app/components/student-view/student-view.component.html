@@ -1,0 +1,28 @@
+<div class="container card" style="margin-top: 40px; width: 40rem">
+  <br>
+  <h3>Student {{student.studentId}}</h3>
+  <div class="form-group">
+    <h5>{{student.lastName}}</h5>
+  </div>
+  <div class="form-group">
+    <h5>{{student.firstName}}</h5>
+  </div>
+  <div class="form-group">
+    <h5>{{student.dni}}</h5>
+  </div>
+  <div class="form-group">
+    <h5>{{student.email}}</h5>
+  </div>
+  <div class="form-group">
+    <h5>{{student.address}}</h5>
+  </div>
+  <div class="form-group">
+    <ul *ngIf="student.career else content">
+      <h5>{{student.career.name}}</h5>
+      <li>{{student.career.description}}</li>
+    </ul>
+    <ng-template #content><p>Don't have a career</p></ng-template>
+  </div>
+  <button class="btn btn-primary" [routerLink]="['/modify/', student.studentId ]">Modify</button>
+  <br>
+</div>

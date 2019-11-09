@@ -1,0 +1,29 @@
+<div class="container card" style="width: 60rem; margin-top: 40px">
+  <h3>Student List</h3>
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Career</th>
+      <th scope="col">View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let student of studentList">
+      <th scope="row">{{student.studentId}}</th>
+      <td>{{student.firstName}}</td>
+      <td>{{student.lastName}}</td>
+      <td>{{student.email}}</td>
+      <td *ngIf="student.career else content">{{student.career.name}}</td>
+      <ng-template #content><td>null</td></ng-template>
+      <td><button class="btn btn-primary" [routerLink]="['/view/', student.studentId ]">View More</button></td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+

@@ -1,0 +1,57 @@
+<div class="container card" style="margin-top: 40px; width: 40rem">
+  <form [formGroup]="studentForm" (ngSubmit)="addStudent()">
+    <br>
+    <h3>Student Form</h3>
+    <div class="form-group">
+      <input type="text" class="form-control" id="fname" placeholder="First Name" formControlName="firstName">
+    </div>
+    <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+      <div *ngIf="firstName.errors.required">
+        First name in required!
+      </div>
+      <div *ngIf="firstName.errors.onlyLetters">
+        Only words!
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="lname" placeholder="Last Name" formControlName="lastName">
+    </div>
+    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+      <div *ngIf="lastName.errors.required">
+        Last name is required!
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="dni" placeholder="Dni" formControlName="dni">
+    </div>
+    <div *ngIf="dni.invalid && (dni.dirty || dni.touched)" class="alert alert-danger">
+      <div *ngIf="dni.errors.required">
+        Dni is required!
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+    </div>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+      <div *ngIf="email.errors.required">
+        Email is required!
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="adress" placeholder="Address" formControlName="address">
+    </div>
+    <div *ngIf="address.invalid && (address.dirty || address.touched)" class="alert alert-danger">
+      <div *ngIf="address.errors.required">
+        Address is required!
+      </div>
+    </div>
+    <div class="form-group">
+      <select class="form-control" formControlName="careerId">
+        <option *ngFor="let career of careers" [value]="career.careerId">{{career.name}}</option>
+      </select>
+    </div>
+
+    <button [disabled]="!studentForm.valid" type="submit" class="btn btn-primary">Add Student</button>
+    <br>
+  </form>
+</div>
